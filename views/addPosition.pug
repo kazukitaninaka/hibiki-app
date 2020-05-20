@@ -30,7 +30,12 @@ block content
 				.col
 					- for(let i = 0; i < data.hibiki; i ++)
 						include _numbers/_hibiki.pug
+			.row
+				.col
+					p パスワードを入力してください
+					input#finalPassword.border-secondary(type="password" name="password")
+					button#passwordConfirm.btn.btn-secondary.ml-3(type="button") 送信ボタン有効化
 			.row.mt-3
 				.col
-					button#submit.btn.btn-primary(type="submit") 送信
+					button#submit.btn.btn-primary(type="submit" disabled) 送信
 			
