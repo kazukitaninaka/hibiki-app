@@ -15,7 +15,7 @@ router.get('/add', memberControl.selectNumbers_post);
 router.post('/add', memberControl.addPosition);
 
 // for postman
-router.post('/', memberControl.createMember);
-router.patch('/:id', memberControl.updateMember);
+// router.post('/', memberControl.createMember);
+// router.patch('/:id', memberControl.updateMember);
 
 module.exports = router;
