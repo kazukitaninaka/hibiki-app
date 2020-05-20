@@ -1,0 +1,48 @@
+#matsuriPug.mb-5
+	h3
+		strong.pl-2 祭太鼓
+	.row
+		.col
+			h5
+				u 前
+			//- - for (let i = 0; i < 6; i++)
+			select.matsuri_front.selectpicker.w-100.mt-2.border.border-secondary(name="matsuri_front" multiple required data-live-search="true" data-max-options="6" title="選択してください" data-size="10")
+				//- option(value="") 選択してください
+				each member in members
+					option(value=`${member.name}`) #{member.name}
+	.row
+		.col-md
+			.row.mt-3
+				.col
+					h5
+						u 打出
+					select#matsuriStart.selectpicker.w-100.mt-2.border.border-secondary(name="matsuri_start" data-live-search="true" required data-size="10")
+						option(value="") 選択してください
+						each member in bigMembers
+							option #{member.name}
+				.col
+					h5
+						u 声
+					select#matsuriShout.selectpicker.w-100.mt-2.border.border-secondary(name="matsuri_shout" data-live-search="true" required data-size="10")
+						option(value="") 選択してください
+						each member in members
+							option #{member.name}
+					
+		.col-md
+			.row.mt-3
+				.col
+					h5
+						u ソロ1
+					select#matsuriSoloOne.selectpicker.w-100.mt-2.border.border-secondary(name="matsuri_soloOne" data-live-search="true" required data-size="10")
+						option(value="") 選択してください
+						each member in members
+							option #{member.name}
+				
+				.col
+					h5
+						u ソロ2
+					select#matsuriSoloTwo.selectpicker.w-100.mt-2.border.border-secondary(name="matsuri_soloTwo" data-live-search="true" required data-size="10")
+						option(value="") 選択してください
+						each member in members
+							option #{member.name}
+					

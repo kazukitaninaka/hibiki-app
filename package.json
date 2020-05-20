@@ -1,0 +1,20 @@
+{
+  "name": "hibiki-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Kazuki Taninaka",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jade-bootstrap": "^1.0.14",
+    "mongoose": "^5.9.13",
+    "pug": "^2.0.4",
+    "sort-object": "^3.0.3",
+    "sort-objects-array": "^1.7.1"
+  }
+}

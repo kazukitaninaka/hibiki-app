@@ -1,0 +1,36 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.drum-img {
+  width: 50px;
+}
+.navbar-brand img {
+  max-width: 70px;
+}
+.navbar-brand .title {
+  display: inline;
+}
+@media (max-width: 992px) {
+  .navbar-brand .title {
+    display: none;
+  }
+}
+
+nav {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+nav footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.display-none {
+  display: none;
+}
+.display-block {
+  display: block;
+}

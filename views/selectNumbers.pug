@@ -1,0 +1,66 @@
+extends base
+
+block content
+	.container
+		.row.mb-3
+			.col
+				h2.text-danger ポジション追加
+		.row
+			.col
+				form#selectNumbers(action="/add")
+					table.table
+						thead
+							tr
+								th(scope="col") 曲
+								th(scope="col") 回数
+						tbody
+							tr
+								td オープニング
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="opening")
+										option 0
+										option 1
+										option 2
+										option 3
+							tr
+								td 祭太鼓
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="matsuri")
+										option 0
+										option 1
+										option 2
+										option 3
+							tr
+								td ソロ
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="solo")
+										option 0
+										option 1
+										option 2
+										option 3
+							tr
+								td 青海波
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="seigaiha")
+										option 0
+										option 1
+										option 2
+										option 3
+							tr
+								td 瑞雲
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="zuiun")
+										option 0
+										option 1
+										option 2
+										option 3
+							tr
+								td 響
+								td.w-50
+									select.selectpicker.form-control.w-50.border.border-secondary(name="hibiki")
+										option 0
+										option 1
+										option 2
+										option 3
+					button.btn.btn-primary.mt-3(type="submit") 次へ
+				

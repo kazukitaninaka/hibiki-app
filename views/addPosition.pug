@@ -1,0 +1,36 @@
+extends base
+
+block content
+	.container
+		.row.mb-3
+			.col
+				h2.text-danger ポジション追加
+		form(method="POST" onsubmit="return avoidDoubleSubmission();")
+			.row
+				.col
+					- for(let i = 0; i < data.opening; i ++)
+						include _numbers/_opening.pug
+			.row
+				.col
+					- for(let i = 0; i < data.matsuri; i ++)
+						include _numbers/_matsuri.pug
+			.row
+				.col
+					- for(let i = 0; i < data.solo; i ++)
+						include _numbers/_solo.pug
+			.row
+				.col
+					- for(let i = 0; i < data.seigaiha; i ++)
+						include _numbers/_seigaiha.pug
+			.row
+				.col
+					- for(let i = 0; i < data.zuiun; i ++)
+						include _numbers/_zuiun.pug
+			.row
+				.col
+					- for(let i = 0; i < data.hibiki; i ++)
+						include _numbers/_hibiki.pug
+			.row.mt-3
+				.col
+					button#submit.btn.btn-primary(type="submit") 送信
+			

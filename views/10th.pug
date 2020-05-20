@@ -1,0 +1,136 @@
+extends base
+
+block content
+	.container
+		h2.text-danger.text-center.text-md-left 現在のポジション状況(10代目)
+		h3.mt-3
+			<span>
+				img.drum-img(src="/img/smallTaiko.jpg", alt="")
+			</span>
+			strong.pl-2 祭太鼓	
+		.row
+			.col-lg-5
+				.row.mt-3
+					.col
+						h5
+							u 前
+						ul.list-unstyled
+							each member in matsuriFrontMembers
+								li.mt-1 #{member.name}: #{member.matsuri.front}
+					.col
+						h5
+							u 声
+						ul.list-unstyled
+							each member in matsuriShoutMembers
+								li.mt-1 #{member.name}: #{member.matsuri.shout}
+			.col-lg-5
+				.row.mt-3
+					.col
+						h5
+							u ソロ1
+						ul.list-unstyled
+							each member in matsuriSoloOneMembers
+								li.mt-1 #{member.name}: #{member.matsuri.soloOne}
+					.col
+						h5
+							u ソロ2
+						ul.list-unstyled
+							each member in matsuriSoloTwoMembers
+								li.mt-1 #{member.name}: #{member.matsuri.soloTwo}
+			.col-lg-2
+				.row.mt-3
+					.col
+						h5
+							u 打出
+						ul.list-unstyled
+							each member in matsuriStartMembers
+								li.mt-1 #{member.name}: #{member.matsuri.start}
+		h3.mt-3
+			<span>
+				img.drum-img(src="/img/smallTaiko.jpg", alt="")
+			</span>
+			strong.pl-2 オープニング
+		.row
+			.col-md-8
+				.row.mt-3
+					.col
+						h5
+							u 前
+						ul.list-unstyled
+							each member in openingFrontMembers
+								li.mt-1 #{member.name}: #{member.opening.front}
+					.col
+						h5
+							u カラ
+						ul.list-unstyled
+							each member in openingKaraMembers
+								li.mt-1 #{member.name}: #{member.opening.kara}
+			.col-md-4
+				.row.mt-3
+					.col
+						h5
+							u おろし
+						ul.list-unstyled
+							each member in openingStartMembers
+								li.mt-1 #{member.name}: #{member.opening.start}
+		h3.mt-3
+			<span>
+				img.drum-img(src="/img/smallTaiko.jpg", alt="")
+			</span>
+			strong.pl-2 ソロ		
+		.row.mt-3
+			.col
+				h5
+					u 前
+				ul.list-unstyled
+					each member in soloFrontMembers
+						li.mt-1 #{member.name}: #{member.solo.front}
+			.col
+				h5
+					u カンカン
+				ul.list-unstyled
+					each member in soloKankanMembers
+						li.mt-1 #{member.name}: #{member.solo.kankan}
+		.row
+			.col-sm
+				h3.mt-3
+					<span>
+						img.drum-img(src="/img/smallTaiko.jpg", alt="")
+					</span>
+					strong.pl-2 青海波		
+				.row.mt-3
+					.col
+						h5
+							u 前
+						ul.list-unstyled
+							each member in seigaihaFrontMembers
+								li.mt-1 #{member.name}: #{member.seigaiha.front}
+			.col-sm
+				h3.mt-3
+					<span>
+						img.drum-img(src="/img/smallTaiko.jpg", alt="")
+					</span>
+					strong.pl-2 瑞雲		
+				.row.mt-3
+					.col
+						h5
+							u 前
+						ul.list-unstyled
+							each member in zuiunFrontMembers
+								li.mt-1 #{member.name}: #{member.zuiun.front}
+			.col-sm
+				h3.mt-3
+					<span>
+						img.drum-img(src="/img/smallTaiko.jpg", alt="")
+					</span>
+					strong.pl-2 響		
+				.row.mt-3
+					.col
+						h5
+							u 前
+						ul.list-unstyled
+							each member in hibikiFrontMembers
+								li.mt-1 #{member.name}: #{member.hibiki.front}
+
+
+	

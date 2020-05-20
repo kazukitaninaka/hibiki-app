@@ -1,0 +1,19 @@
+#soloPug.mb-5
+	h3
+		strong.pl-2 ソロ		
+	.row.mt-3
+		.col
+			h5
+				u 前
+			//- - for (let i = 0; i < 5; i++)
+			select.solo_front.selectpicker.w-100.mt-2.border.border-secondary(name="solo_front" multiple required data-live-search="true" data-max-options="5" title="選択してください" data-size="10")
+				each member in members
+					option(value=`${member.name}`) #{member.name}
+	.row.mt-3
+		.col
+			h5
+				u カンカン
+			select.selectpicker.w-100.mt-2.border.border-secondary(name="solo_kankan" data-live-search="true" required data-size="10")
+				option(value="") 選択してください
+				each member in members
+					option #{member.name}
