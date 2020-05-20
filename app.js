@@ -38,6 +38,7 @@ app.locals.basedir = path.join(__dirname, 'views');
 // Routes
 app.use('/', mainRouter);
 
-app.listen(3000, () => {
-  console.log('server is running');
+const port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
 });
