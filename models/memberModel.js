@@ -12,31 +12,73 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   matsuri: {
-    soloOne: Number,
-    soloTwo: Number,
-    shout: Number,
-    front: Number,
-    start: Number,
+    soloOne: {
+      type: Number,
+      default: 0,
+    },
+    soloTwo: {
+      type: Number,
+      default: 0,
+    },
+    shout: {
+      type: Number,
+      default: 0,
+    },
+    front: {
+      type: Number,
+      default: 0,
+    },
+    start: {
+      type: Number,
+      default: 0,
+    },
   },
   opening: {
-    kara: Number,
-    front: Number,
-    start: Number,
+    kara: {
+      type: Number,
+      default: 0,
+    },
+    front: {
+      type: Number,
+      default: 0,
+    },
+    start: {
+      type: Number,
+      default: 0,
+    },
   },
   solo: {
-    kankan: Number,
-    front: Number,
+    kankan: {
+      type: Number,
+      default: 0,
+    },
+    front: {
+      type: Number,
+      default: 0,
+    },
   },
   seigaiha: {
-    front: Number,
+    front: {
+      type: Number,
+      default: 0,
+    },
   },
   zuiun: {
-    front: Number,
+    front: {
+      type: Number,
+      default: 0,
+    },
   },
   hibiki: {
-    front: Number,
+    front: {
+      type: Number,
+      default: 0,
+    },
   },
-  big: Boolean,
+  big: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Member = mongoose.model('Member', memberSchema);

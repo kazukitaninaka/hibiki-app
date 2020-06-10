@@ -1,0 +1,39 @@
+extends base
+
+block content
+	.container
+		.row.mb-3
+			.col
+				h2.text-danger メンバー情報変更
+		form(method="POST" onsubmit="return avoidDoubleSubmission();")
+			h5 メンバー選択
+			select.selectpicker.mt-2.border.border-secondary(name="name" data-live-search="true" required data-max-options="6" title="- 選択してください -" data-size="10")
+				each member in members
+					option(value=`${member.name}`) #{member.name}
+			h5.mt-5 出演回数調整
+			h5 - 曲とポジション
+			select.mt-2.mr-2.selectpicker.border.border-secondary(name="number" required)
+				option(value="") - 選択してください -
+				option(value="opening_front") オープニング - 前
+				option(value="opening_kara") オープニング - カラ
+				option(value="opening_start") オープニング - おろし
+				option(value="matsuri_front") 祭太鼓 - 前
+				option(value="matsuri_soloOne") 祭太鼓 - ソロ1
+				option(value="matsuri_soloTwo") 祭太鼓 - ソロ2
+				option(value="matsuri_start") 祭太鼓 - 打出
+				option(value="solo_front") ソロ - 前
+				option(value="solo_kankan") ソロ - カンカン
+				option(value="seigaiha_front") 青海波 - 前
+				option(value="zuiun_front") 瑞雲 - 前
+				option(value="hibiki_front") 響 - 前
+			h5.mt-2 - この曲の出演回数を
+			select.mt-2.selectpicker.border.border-secondary(name="upOrDown" required)
+				option(value="") - 選択してください -
+				option(value="up") 増やす
+				option(value="down") 減らす
+
+			.row.mt-5
+				.col
+					button#submit.btn.btn-primary(type="submit") 送信
+
+

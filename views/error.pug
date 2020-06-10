@@ -2,7 +2,8 @@ extends base
 
 block content
 	.container
-		.row
+		.row.mb-3
 			.col
-				h2 #{content}が完了しました。
+				h2.text-danger エラー
+				p #{errorMsg}
 				a(href="/") ホームに戻る

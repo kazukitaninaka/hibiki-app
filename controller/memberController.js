@@ -1,4 +1,5 @@
 const Member = require('../models/memberModel');
+const { check } = require('express-validator');
 const { dynamicSort } = require('../utils/sort');
 
 exports.getMembers = (generation) => {
@@ -59,6 +60,7 @@ exports.getMembers = (generation) => {
 
     try {
       res.status(200).render(`${generation}th`, {
+        generation,
         members,
         bigMembers,
         matsuriFrontMembers,
@@ -82,45 +84,6 @@ exports.getMembers = (generation) => {
       });
     }
   };
-};
-
-exports.createMember = async (req, res) => {
-  const member = await Member.create(req.body);
-
-  try {
-    res.status(201).json({
-      status: 'success',
-      data: {
-        member,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'fail',
-      message: error,
-    });
-  }
-};
-
-exports.updateMember = async (req, res) => {
-  const member = await Member.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-
-  try {
-    res.status(201).json({
-      status: 'success',
-      data: {
-        member,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'fail',
-      message: error,
-    });
-  }
 };
 
 exports.selectNumbers_get = async (req, res) => {
@@ -213,7 +176,114 @@ exports.addPosition = async (req, res) => {
   }
 
   try {
-    res.status(200).render('doneAdding');
+    res.status(200).render('doneAdding', {
+      content: 'ポジション',
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+};
+
+exports.createMember_get = async (req, res) => {
+  try {
+    res.status(200).render('newMember');
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+};
+
+exports.createMember_post = async (req, res) => {
+  const member = await Member.create(req.body);
+  console.log(member);
+  try {
+    res.status(200).render('doneAdding', {
+      content: 'メンバー',
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+};
+
+exports.updateMember_get = async (req, res) => {
+  const members = await Member.find({});
+  try {
+    res.status(201).render('updateMember', {
+      members,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+};
+
+exports.updateMember_patch = async (req, res) => {
+  await Member.findOne({ name: req.body.name }, (err, member) => {
+    const splitted = req.body.number.split('_');
+    if (req.body.big) {
+      member.big = req.body.big;
+    }
+    if (req.body.number && req.body.upOrDown) {
+      if (req.body.upOrDown === 'up') {
+        member[splitted[0]][splitted[1]]++;
+      } else if (
+        req.body.upOrDown === 'down' &&
+        member[splitted[0]][splitted[1]] > 0
+      ) {
+        member[splitted[0]][splitted[1]]--;
+      }
+    }
+    member.save();
+    try {
+      res.status(200).render('doneAdding', {
+        content: 'メンバー情報更新',
+      });
+    } catch (error) {
+      res.status(400).json({
+        status: 'fail',
+        message: error,
+      });
+    }
+  });
+};
+
+exports.updateBig_get = async (req, res) => {
+  const members = await Member.find({});
+  try {
+    res.status(201).render('updateBig', {
+      members,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+};
+
+exports.updateBig_patch = async (req, res) => {
+  await Member.findOne({ name: req.body.name }, (err, member) => {
+    if (req.body.big === 'true') {
+      member.big = true;
+    } else if (req.body.big === 'false') {
+      member.big = false;
+    }
+    member.save();
+  });
+  try {
+    res.status(200).render('doneAdding', {
+      content: 'メンバー情報更新',
+    });
   } catch (error) {
     res.status(400).json({
       status: 'fail',

@@ -1,0 +1,15 @@
+extends base
+
+block content
+	.container
+		.row.mb-3
+			.col
+				h2.text-danger メンバー追加
+		form(method="POST" onsubmit="return avoidDoubleSubmission();")
+			h5 苗字
+			input.mb-3(type="text" name="name")
+			h5 代
+			input(type="number" name="generation")
+			.row.mt-5
+				.col
+					button.btn.btn-primary(type="submit") 送信

@@ -1,0 +1,20 @@
+extends base
+
+block content
+	.container
+		.row.mb-3
+			.col
+				h2.text-danger 大太鼓メンバー調整
+		form(method="POST" onsubmit="return avoidDoubleSubmission();")
+			h5 メンバー選択
+			select.selectpicker.mt-2.border.border-secondary(name="name" data-live-search="true" required data-max-options="6" title="- 選択してください -" data-size="10")
+				each member in members
+					option(value=`${member.name}`) #{member.name}
+			h5.mt-5 大太鼓メンバーですか？
+			select.selectpicker.mt-2.border.border-secondary(name="big" required)
+				option(value="") - 選択してください -
+				option(value="true") はい
+				option(value="false") いいえ
+			.row.mt-5
+					.col
+						button#submit.btn.btn-primary(type="submit") 送信
