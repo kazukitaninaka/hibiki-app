@@ -9,7 +9,8 @@ block content
 			h5 苗字
 			input.mb-3(type="text" name="name")
 			h5 代
-			input(type="number" name="generation")
+			input(type="number" name="generation" inputmode="numeric")
+			small.d-block 半角数字で入力してください
 			.row.mt-5
 				.col
 					button.btn.btn-primary(type="submit") 送信
