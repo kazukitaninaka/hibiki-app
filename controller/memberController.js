@@ -1,5 +1,5 @@
 const Member = require('../models/memberModel');
-const { check } = require('express-validator');
+const Log = require('../models/logModel');
 const { dynamicSort } = require('../utils/sort');
 
 exports.getMembers = (generation) => {
@@ -133,6 +133,7 @@ const modifyData = (arg, members, number, position) => {
 };
 
 exports.addPosition = async (req, res) => {
+  console.log(req.body);
   let members = await Member.find();
   const {
     opening_front,
@@ -150,13 +151,6 @@ exports.addPosition = async (req, res) => {
     hibiki_front,
   } = req.body;
 
-  // console.log(opening_kara);
-  // console.log(opening_start);
-  // console.log(matsuri_front);
-  // console.log(matsuri_shout);
-  // console.log(matsuri_soloOne);
-  // console.log(matsuri_soloTwo);
-  // console.log(matsuri_start);
   modifyData(opening_front, members, 'opening', 'front');
   modifyData(opening_kara, members, 'opening', 'kara');
   modifyData(opening_start, members, 'opening', 'start');
@@ -175,9 +169,43 @@ exports.addPosition = async (req, res) => {
     await Member.findOneAndUpdate({ name: member.name }, member);
   }
 
+  Log.create(
+    {
+      date: Date.now(),
+      opening: {
+        front: opening_front,
+        kara: opening_kara,
+        start: opening_start,
+      },
+      matsuri: {
+        front: matsuri_front,
+        start: matsuri_start,
+        shout: matsuri_shout,
+        soloOne: matsuri_soloOne,
+        soloTwo: matsuri_soloTwo,
+      },
+      solo: {
+        front: solo_front,
+        kankan: solo_kankan,
+      },
+      seigaiha: {
+        front: seigaiha_front,
+      },
+      zuiun: {
+        front: zuiun_front,
+      },
+      hibiki: {
+        front: hibiki_front,
+      },
+    },
+    (err, log) => {
+      if (err) return new Error(err);
+    }
+  );
+
   try {
     res.status(200).render('doneAdding', {
-      content: 'ポジション',
+      content: 'ポジション追加',
     });
   } catch (error) {
     res.status(400).json({
@@ -200,10 +228,9 @@ exports.createMember_get = async (req, res) => {
 
 exports.createMember_post = async (req, res) => {
   const member = await Member.create(req.body);
-  console.log(member);
   try {
     res.status(200).render('doneAdding', {
-      content: 'メンバー',
+      content: 'メンバー追加',
     });
   } catch (error) {
     res.status(400).json({
