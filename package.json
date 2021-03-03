@@ -14,7 +14,7 @@
     "express-validator": "^6.5.0",
     "jade-bootstrap": "^1.0.14",
     "mongoose": "^5.9.13",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sort-object": "^3.0.3",
     "sort-objects-array": "^1.7.1"
   }
