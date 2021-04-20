@@ -39,3 +39,6 @@ nav {
 .room {
   flex: 1;
 }
+.bootstrap-select .dropdown-toggle .filter-option {
+  height: auto;
+}
